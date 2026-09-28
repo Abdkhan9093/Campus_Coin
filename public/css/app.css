@@ -1,0 +1,3 @@
+/* Laravel app stylesheet entry point. Existing CSS is preserved in base-app.css. */
+@import url("base-app.css");
+@import url("responsive.css");

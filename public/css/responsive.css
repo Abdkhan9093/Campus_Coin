@@ -1,0 +1,389 @@
+/*
+ * Campus Coin - Responsive Compatibility Layer
+ *
+ * Purpose: make the existing UI adapt to phones, tablets, laptops,
+ * desktops and large displays without changing routes, markup, content,
+ * colors, typography choices or application behavior.
+ *
+ * This file intentionally contains layout/overflow/accessibility rules only.
+ */
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after {
+    min-width: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    max-width: 100%;
+    font: inherit;
+}
+
+button,
+a,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Keep long values from forcing the page wider than the viewport. */
+:not(pre) > code,
+pre,
+td,
+th,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+a,
+button {
+    overflow-wrap: anywhere;
+}
+
+pre {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Generic data-table protection. Existing table appearance is preserved. */
+.table-wrapper,
+.table-responsive,
+.table-wrap,
+.history-table-wrap,
+.responsive-table,
+[data-table-scroll] {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper > table,
+.table-responsive > table,
+.table-wrap > table,
+.history-table-wrap > table,
+.responsive-table > table,
+[data-table-scroll] > table {
+    min-width: 560px;
+}
+
+/* Prevent common grid/flex layouts from creating accidental horizontal overflow. */
+.grid,
+.cards,
+.dashboard-grid,
+.report-grid,
+.two-column,
+.category-grid,
+.tip-grid,
+.footer-grid,
+.category-add,
+.dashboard-info,
+.dashboard-hero,
+.insight-card,
+.card-heading,
+.tip-row,
+.quick-link,
+.navbar,
+.navbar nav,
+.nav-user,
+.filter-card form {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Large screens: use available width without making text/components enormous. */
+@media (min-width: 1600px) {
+    .page {
+        width: min(88%, 1500px);
+    }
+
+    .dashboard-hero {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+@media (min-width: 2200px) {
+    .page {
+        width: min(86%, 1750px);
+    }
+
+    .dashboard-hero {
+        margin-left: 6%;
+        margin-right: 6%;
+    }
+}
+
+/* Tablet / small laptop. */
+@media (max-width: 1050px) {
+    .navbar {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .navbar nav {
+        min-width: 0;
+    }
+
+    .dashboard-grid,
+    .report-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-hero {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+}
+
+/* Tablet portrait / large phones. */
+@media (max-width: 800px) {
+    .page {
+        width: 92%;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .navbar nav {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        padding-bottom: 3px;
+    }
+
+    .navbar nav a {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .dashboard-hero {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dashboard-hero-box {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .two-column,
+    .category-grid,
+    .tip-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-add {
+        grid-template-columns: 1fr;
+    }
+
+    .budget-row {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-card form > div {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .filter-card form button,
+    .filter-card form .secondary-dark-btn {
+        width: 100%;
+    }
+
+    .form-card,
+    .profile-card,
+    .dashboard-card,
+    .report-card,
+    .filter-card,
+    .insight-card,
+    .contact-form-card,
+    .contact-info-content {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-card input,
+    .form-card select,
+    .form-card textarea,
+    .profile-card input,
+    .profile-card select,
+    .filter-card input,
+    .filter-card select,
+    .category-card input,
+    .category-card select {
+        min-width: 0;
+        box-sizing: border-box;
+    }
+}
+
+/* Phones. */
+@media (max-width: 600px) {
+    .page {
+        width: 92%;
+    }
+
+    .navbar {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .navbar nav {
+        gap: 10px;
+    }
+
+    .dashboard-hero,
+    .content {
+        max-width: 100%;
+    }
+
+    .dashboard-hero {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+    .dashboard-hero h1,
+    .page-heading h1 {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .card-heading {
+        flex-wrap: wrap;
+    }
+
+    .tip-row,
+    .insight-card,
+    .dashboard-info {
+        flex-wrap: wrap;
+    }
+
+    .tip-row .small-save {
+        margin-left: 0;
+    }
+
+    .report-line {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .report-line strong {
+        text-align: left;
+    }
+
+    .chart-row {
+        grid-template-columns: 55px minmax(0, 1fr);
+    }
+
+    .bars > div {
+        max-width: 100%;
+    }
+
+    .category-card {
+        align-items: flex-start;
+    }
+
+    .category-card form {
+        margin-left: auto;
+    }
+
+    .category-card .category-icon {
+        flex: 0 0 40px;
+    }
+
+    /* Inputs must never create horizontal overflow on mobile browsers. */
+    input,
+    select,
+    textarea {
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        overflow: hidden;
+    }
+}
+
+/* Very small phones. */
+@media (max-width: 380px) {
+    .page,
+    .dashboard-hero {
+        width: 94%;
+    }
+
+    .navbar {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .dashboard-card,
+    .report-card,
+    .filter-card,
+    .insight-card,
+    .form-card,
+    .contact-form-card,
+    .contact-info-content {
+        padding: 15px;
+    }
+
+    .dashboard-hero-box {
+        padding: 18px;
+    }
+
+    .dashboard-hero-box strong {
+        font-size: 24px;
+    }
+}
+
+/* Accessibility: respect users who request reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
